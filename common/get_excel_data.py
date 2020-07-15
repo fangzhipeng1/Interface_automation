@@ -9,7 +9,7 @@
 '''
 
 from common.operate_excel import OperateExcle
-from excel_canstant import *
+from common.excel_canstant import *
 
 class GetExcelData:
 
@@ -23,6 +23,6 @@ class GetExcelData:
 
     # 获得是否执行
     def get_is_run(self):
-        col =
+        pass
 
 
