@@ -8,12 +8,13 @@ import json
 
 class OperaterJson:
 
-    def __init__(self,filename):
-        self.data =self.red_json(filename)
+    def __init__(self):
+        self.data =self.red_json()
 
-    def red_json(self,filename):
+    def red_json(self):
+        file =r"../data/test.json"
         try:
-            with open(filename) as f:
+            with open(file) as f:
                 data = json.load(f)
                 return data
         except:
@@ -24,8 +25,8 @@ class OperaterJson:
 
 if __name__ == '__main__':
     file =r"../data/test.json"
-    data =OperaterJson(file)
-    print(data.get_json_value("test")[0])
+    data =OperaterJson()
+    print(data.get_json_value("test"))
 
 # with open(r"../data/test.json") as f:
 #     print(json.load(f))

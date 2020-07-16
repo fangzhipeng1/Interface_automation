@@ -21,7 +21,7 @@ from common.operate_json import OperaterJson
 class GetExcelData:
 
     def __init__(self):
-        self.oper_excel = OperateExcle
+        self.oper_excel = OperateExcle()
 
     # 获得行数
     def get_lines(self):
@@ -30,8 +30,8 @@ class GetExcelData:
     # 获得是否执行
     def get_is_run(self,row):
         flag = None
-        col = run()
-        run_mode= self.oper_excel.get_value(row, col)
+        col = int(run())
+        run_mode= self.oper_excel.get_value(int(row), col)
         if run_mode == "yes":
             flag = True
         else:
@@ -39,45 +39,51 @@ class GetExcelData:
         return flag
 
     # 是否携带header
-    def is_header(self,row):
-        col = header()
-        headers = self.oper_excel.get_value(row,col)
-        if headers == "None":
+    def get_is_header(self,row):
+        col = int(header())
+        headers = self.oper_excel.get_value(int(row),col)
+        if headers == "":
             return headers
         else:
             return headers
     # 获得请求方法
     def get_request_method(self,row):
-        col = request_way()
-        request_method= self.oper_excel.get_value(row,col)
+        col = int(request_way())
+        request_method= self.oper_excel.get_value(int(row),col)
         return request_method
     # 获得url
     def get_request_url(self,row):
-        col = url()
-        request_url= self.oper_excel.get_value(row,col)
+        col = int(url())
+        request_url= self.oper_excel.get_value(int(row),col)
+        return request_url
 
     # 获得请求数据
     def get_request_data(self,row):
-        col = requst_data()
-        data = self.oper_excel.get_value(row,col)
+        col = int(requst_data())
+        data = self.oper_excel.get_value(int(row),col)
         if data == "":
             return None
         else:
             return data
     # 通过关键字获得数据
-    def get_data_for_json(self):
-        key = self.get_request_data()
+    def get_data_for_json(self,row):
+        key = self.get_request_data(int(row))
         json_value= OperaterJson().get_json_value(key)
         return json_value
 
     # 获得预期结果
     def get_expect_data(self,row):
-        col = expect()
-        expect_data=self.oper_excel.get_value(row,col)
+        col = int(expect())
+        expect_data=self.oper_excel.get_value(int(row),col)
         if expect_data == "":
             return None
         else:
             return expect_data
 
 if __name__ == '__main__':
-    print(GetExcelData().get_is_run())
+    print(type(url()))
+    print(GetExcelData().get_is_run(2))
+    print(GetExcelData().get_request_url(2))
+    print(GetExcelData().get_request_data(2))
+    print(GetExcelData().get_data_for_json(2))
+    print(GetExcelData().get_is_header(2))

@@ -27,7 +27,7 @@ class OperateExcle:
         if filename:
             self.filename= filename
         else:
-            self.filename=r"C:\Users\fan\Desktop\个人资料表.xlsx"
+            self.filename=r"C:\Users\fan\Desktop\测试用例模板.xlsx"
         try:
             wb = openpyxl.load_workbook(self.filename)
             self.ws = wb.active
